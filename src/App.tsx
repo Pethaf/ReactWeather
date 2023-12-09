@@ -1,9 +1,13 @@
-import { Search } from "./Components/Search/search"
+import { Search } from "./Components/Search/Search"
 import "./App.css";
 function App() {
+  const handleOnSearch = (searchData:any):void => {
+    alert("Something")
+    console.log(searchData)
+  }
   return (
     <div className="container">
-      <Search />
+      <Search onSearchChange={handleOnSearch}/>
     </div>
   )
 }
