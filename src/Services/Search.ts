@@ -9,7 +9,7 @@ const GEO_API_OPTIONS = {
 const CITY_POPULATION_THRESHOLD = 1000000;
 
 const fetchCityByName =(cityName:any) => {
-	return fetch(`${GEO_API_URL}cities?minPopulation=1000000&namePrefix=${cityName}`, GEO_API_OPTIONS).
+	return fetch(`${GEO_API_URL}cities?minPopulation=${CITY_POPULATION_THRESHOLD}&namePrefix=${cityName}`, GEO_API_OPTIONS).
             then(response => response.json())
 }
 

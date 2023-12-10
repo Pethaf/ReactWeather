@@ -9,7 +9,7 @@ const CurrentWeather =(city:ICity) => {
             <p className="city">{city.label}</p>
             <p className="weather-description">Sunny</p>
         </div>
-        <img alt="weather" className="weather-icon"></img>
+        <img alt="weather" className="weather-icon" src="/icons/02d.png"></img>
     </div>
 }
 
