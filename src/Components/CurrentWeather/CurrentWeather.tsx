@@ -1,22 +1,17 @@
 import "./CurrentWeather.css";
 import { ICity } from "../../Interfaces/ICity";
 import { useState,useEffect } from "react";
-import { fetchCurrentWeather, fetchWeatherForecast } from "../../Services/Weather";
+import { fetchCurrentWeather} from "../../Services/Weather";
 const CurrentWeather = (city: ICity) => {
     const [currentWeather, setCurrentWeather] = useState({});
-    const [forecastData, setForecastData] = useState({})
     const [isError, setIsError] = useState(false);
     const [loading, setIsLoading] = useState(true);
 
     const coordinates = city.value.split(" ");
     useEffect(() => {
-    Promise.all(
-        [fetchCurrentWeather({latitude:coordinates[0], longitude:coordinates[1]}),
-         fetchWeatherForecast({latitude:coordinates[0], longitude:coordinates[1]})])
-    .then(result => {
+        fetchCurrentWeather({latitude:coordinates[0], longitude:coordinates[1]}).then(result => {
         setIsLoading(false); 
-        setCurrentWeather({city: city.label, ...result[0]})
-        setForecastData({city: city.label, ...result[1]})
+        setCurrentWeather({city: city.label, ...result})
     }
         )
     .catch(err => setIsError(true))}, [city.label])
