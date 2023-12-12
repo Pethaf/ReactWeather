@@ -6,7 +6,6 @@ import "./App.css";
 function App() {
   const [city, setCity] = useState<ICity>();
   const handleOnSearch = (searchData:ICity):void => {
-    console.log(searchData)
     setCity(searchData)
   }
   return (
