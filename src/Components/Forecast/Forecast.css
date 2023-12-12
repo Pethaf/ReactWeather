@@ -63,3 +63,12 @@
     height: 30px;
     justify-content: space-between;
 }
+
+.daily-details-grid-item p:nth-child(1)
+{
+    color: #757575;
+}
+
+.daily-details-grid p:nth-child(2) {
+    color: #212121;
+}
