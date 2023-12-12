@@ -5,13 +5,20 @@ const port = 3001;
 var cors = require('cors')
 app.use(cors())
 app.use(express.json());
-app.get("/api/weather",(req,res) => {
-   fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${req.body.lat}&lon=${req.body.long}&appid=${process.env.OPEN_WEATHER_API_KEY}`)
-    .then(resp => resp.json())
-    .then(res => console.log(res))
+app.get("/",(req,res) => {
     res.send("Hello World")
 })
+app.get("/api/weather",(req,res) => {
+   fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${req.query.latitude}&lon=${req.query.longitude}&appid=${process.env.OPEN_WEATHER_API_KEY}&units=metric`)
+    .then(resp => resp.json())
+    .then(result => res.json(result).end())
+})
 
+app.get("/api/forecast",(req,res) => {
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${req.query.latitude}&lon=${req.query.longitude}&appid=${process.env.OPEN_WEATHER_API_KEY}&units=metric`)
+    .then(resp => resp.json())
+    .then(result => res.json(result).end())
+})
 app.listen(port, () => {
     console.log(`Example app running on port ${port}`)
 })
